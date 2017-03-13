@@ -9,30 +9,52 @@
 
 import sys
 import re
+import urllib
+import Bio
+from Bio.PDB import *
 
-filename=open(sys.argv[1])
+if sys.argv[1]=='-d':
+	print('Downloading',sys.argv[2],'from http://rcsb.org')
+	protein=sys.argv[2]
+	link='http://files.rcsb.org/download/101M.pdb'
+	urllib.request.urlretrieve(link,protein)
+	filename=open(sys.argv[2])
+else:
+	filename=open(sys.argv[1])
 
-print('<script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>')
-print('<a-scene>')
-print('\t','<a-sky color="#111111"></a-sky>')
+#print('Calculating...')
+
+data=open('code.html','w')
+
+data.write('<script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>\n')
+data.write('<a-scene>\n')
+data.write('\t<a-sky color="#111111"></a-sky>\n')
 
 for line in filename:
 	if line.startswith('ATOM'):
 		splitline=line.split()
-		coordinates=(splitline[11],splitline[6],splitline[7],splitline[8])
+		try:
+			coordinates=(splitline[11],splitline[6],splitline[7],splitline[8])
+		except:
+			coordinates=(splitline[10],splitline[6],splitline[7],splitline[8])
 		#Convert PyMOL colurs to HEX: (225)*(Pymol Colour Value) https://pymolwiki.org/index.php/Color_Values
 		if coordinates[0]=='N':
-			print('\t','<a-sphere position="',coordinates[1],coordinates[2],coordinates[3],'" radius="1" color="#2D2DE1"></a-sphere>')
+			js='\t<a-sphere position="',coordinates[1],coordinates[2],coordinates[3],'" radius="1" color="#2D2DE1"></a-sphere>\n'
 		elif coordinates[0]=='C':
-			print('\t','<a-sphere position="',coordinates[1],coordinates[2],coordinates[3],'" radius="1" color="#2DE12D"></a-sphere>')
+			js='\t<a-sphere position="',coordinates[1],coordinates[2],coordinates[3],'" radius="1" color="#2DE12D"></a-sphere>\n'
 		elif coordinates[0]=='O':
-			print('\t','<a-sphere position="',coordinates[1],coordinates[2],coordinates[3],'" radius="1" color="#E14343"></a-sphere>')
+			js='\t<a-sphere position="',coordinates[1],coordinates[2],coordinates[3],'" radius="1" color="#E14343"></a-sphere>\n'
 		elif coordinates[0]=='H':
-			print('\t','<a-sphere position="',coordinates[1],coordinates[2],coordinates[3],'" radius="1" color="#CBCBCB"></a-sphere>')
+			js='\t<a-sphere position="',coordinates[1],coordinates[2],coordinates[3],'" radius="1" color="#CBCBCB"></a-sphere>\n'
 		elif coordinates[0]=='S':
-			print('\t','<a-sphere position="',coordinates[1],coordinates[2],coordinates[3],'" radius="1" color="#CBAE38"></a-sphere>')
-		elif	coordinates[0]=='I':
-			print('\t','<a-sphere position="',coordinates[1],coordinates[2],coordinates[3],'" radius="1" color="#830083"></a-sphere>')
+			js='\t<a-sphere position="',coordinates[1],coordinates[2],coordinates[3],'" radius="1" color="#CBAE38"></a-sphere>\n'
+		elif coordinates[0]=='I':
+			js='\t<a-sphere position="',coordinates[1],coordinates[2],coordinates[3],'" radius="1" color="#830083"></a-sphere>\n'
 		else:
-			print('\t','<a-sphere position="',coordinates[1],coordinates[2],coordinates[3],'" radius="1" color="#6F6F6F"></a-sphere>')
-print('</a-scene>')
+			js='\t<a-sphere position="',coordinates[1],coordinates[2],coordinates[3],'" radius="1" color="#6F6F6F"></a-sphere>\n'
+		x=' '.join(js)
+		data.write(x)
+
+data.write('</a-scene>')
+data.close()
+print('Done')
