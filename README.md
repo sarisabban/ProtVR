@@ -14,9 +14,12 @@ Contact the author at sari.sabban@gmail.com for any questions regarding this scr
 ## HOW TO USE:
 To use follow these steps:
 
-1. Download your protein from the RCSB (rcsb.org) website.
-2. Place this script and the protein's file (.pdb) in the same folder.
-3. In the terminal, navigate to the folder.
-4. Run by typing this command:
-`./ProtVR.py FILENAME.pdb > Protein_VR_Code`
-5. View your HTML script in http://codepen.io/mozvr/pen/BjygdO
+1. To download the protein file from the RCSB (rcsb.org) website and run the script type this command:
+`./ProtVR.py -d FILENAME.pdb `
+
+2. If the protein file is already available in your computer:
+  * Place this script and the protein's file (.pdb) in the same folder.
+  * In the terminal, navigate to the folder.
+  * Run the script type this command: `./ProtVR.py FILENAME.pdb `
+
+3. View your HTML script in http://codepen.io/mozvr/pen/BjygdO
