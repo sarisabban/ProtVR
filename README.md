@@ -14,7 +14,7 @@ Contact the author at sari.sabban@gmail.com for any questions regarding this scr
 ## HOW TO USE:
 To use follow these steps:
 
-1. To download the protein file from the RCSB (rcsb.org) website and run the script type this command:
+1. To download the protein file from the RCSB (rcsb.org) website and run the script type this command:<br>
 `./ProtVR.py -d FILENAME.pdb `
 
 2. If the protein file is already available in your computer:
