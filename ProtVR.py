@@ -11,6 +11,7 @@ import sys
 import re
 import urllib
 import Bio
+import os
 from Bio.PDB import *
 
 if sys.argv[1]=='-d':
@@ -57,4 +58,7 @@ for line in filename:
 
 data.write('</a-scene>')
 data.close()
+if sys.argv[1]=='-d':
+	os.remove(sys.argv[2])
+
 print('Done')
