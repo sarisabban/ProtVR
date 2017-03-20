@@ -16,10 +16,7 @@ from Bio.PDB import *
 
 if sys.argv[1]=='-d':
 	print('Downloading',sys.argv[2],'from http://rcsb.org')
-	protein=sys.argv[2]
-	link='http://files.rcsb.org/download/101M.pdb'
-	urllib.request.urlretrieve(link,protein)
-	filename=open(sys.argv[2])
+	filename=urllib.request.urlopen('http://files.rcsb.org/view/'+sys.argv[2])
 else:
 	filename=open(sys.argv[1])
 
@@ -32,6 +29,7 @@ data.write('<a-scene>\n')
 data.write('\t<a-sky color="#111111"></a-sky>\n')
 
 for line in filename:
+	line=line.decode()
 	if line.startswith('ATOM'):
 		splitline=line.split()
 		try:
@@ -58,7 +56,5 @@ for line in filename:
 
 data.write('</a-scene>')
 data.close()
-if sys.argv[1]=='-d':
-	os.remove(sys.argv[2])
 
 print('Done')
