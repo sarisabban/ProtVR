@@ -25,5 +25,5 @@ To use follow these steps:
 3. View your HTML script in http://codepen.io/mozvr/pen/BjygdO
 
 
-## Website:
+## WEBSITE:
 A website is available for ease of use: http://protvr.com. The website is opensource and can be found in the FlaskApp directory.
