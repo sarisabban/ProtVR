@@ -16,7 +16,7 @@ from Bio.PDB import *
 
 if sys.argv[1]=='-d':
 	print('Downloading',sys.argv[2],'from http://rcsb.org')
-	filename=urllib.request.urlopen('http://files.rcsb.org/view/'+sys.argv[2])
+	filename=urllib.request.urlopen('http://files.rcsb.org/view/'+sys.argv[2]+'.pdb')
 else:
 	filename=open(sys.argv[1])
 
