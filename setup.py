@@ -6,4 +6,9 @@ setuptools.setup(
     install_requires=[
         'flask',
     ],
+    entry_points={
+        'console_scripts': [
+            'launch = protvr.launch:launch',
+        ],
+    },
 )
