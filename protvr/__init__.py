@@ -5,7 +5,7 @@
 # Created By:   	Sari Sabban
 # Created Date: 	20 March 2017
 
-from ProtVR import ProtVR
+from protvr.ProtVR import ProtVR
 from flask import *
 app = Flask(__name__)
 
