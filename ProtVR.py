@@ -29,7 +29,7 @@ data.write('<a-scene>\n')
 data.write('\t<a-sky color="#111111"></a-sky>\n')
 
 for line in filename:
-	line=line.decode()
+	#line=line.decode()
 	if line.startswith('ATOM'):
 		splitline=line.split()
 		try:
