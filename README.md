@@ -1,15 +1,11 @@
 # ProtVR
 Visualise a Protein in Virtual Reality
 
-
-
 ## DESCRIPTION:
 This script does the following converts a PDB (Protein Data Bank) file into a HTML code that can be used to visualise the protein in VR (Virtual Reality).
 
 This script was written to run on GNU/Linux using python 3, it was not tested in Windows or MacOS.
 Contact the author at sari.sabban@gmail.com for any questions regarding this script.
-
-
 
 ## HOW TO USE:
 To use follow these steps:
@@ -23,7 +19,6 @@ To use follow these steps:
   * Run the script type this command: `./ProtVR.py FILENAME.pdb `
 
 3. View your HTML script in http://codepen.io/mozvr/pen/BjygdO
-
 
 ## WEBSITE:
 A website is available for ease of use: http://protvr.com. The website is opensource and can be found in the FlaskApp directory.
